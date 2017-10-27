@@ -17,7 +17,7 @@
        under the License.
  */
 
-package com.phonegap.helloworld;
+package com.motivational.motivational;
 
 import android.os.Bundle;
 import org.apache.cordova.*;
