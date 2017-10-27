@@ -19,25 +19,58 @@ const port = 3000
 const express = require('express')
 const app = express()
 
-const user = {
-  id: "47dzw6d",
-  name: "hallifax",
-  email: "test@example.com",
-  password: "FDDHCDKJADKJAHSKJHSAX",
-  profileImg: "img/profilepic_hallifax.jpg"
-}
+const users = [
+  {
+    id: "47dzw6d",
+    name: "hallifax",
+    email: "test@example.com",
+    password: "FDDHCDKJADKJAHSKJHSAX",
+    profileImg: "img/profilepic_hallifax.jpg"
+  },
+  {
+    id: "ewgweg",
+    name: "hallifax",
+    email: "test@example.com",
+    password: "FDDHCDKJADKJAHSKJHSAX",
+    profileImg: "img/profilepic_hallifax.jpg"
+  },
+  {
+    id: "47dewhewgzw6d",
+    name: "testuser",
+    email: "test@example.com",
+    password: "FDDHCDKJADKJAHSKJHSAX",
+    profileImg: "img/profilepic_hallifax.jpg"
+  }
+];
 
 app.get('/user', function (req, res) {
-  res.send("Got a GET request at /user")
+  res.json(users.map( ({ id, name, email, profileImg }) => {
+    return {
+      id,
+      name,
+      email,
+      profileImg
+    }
+  }));
 })
 
-app.get('/user/:name', function (req, res) {
-  if (req.params.name == user.name) {
-    res.send(`User registered! Id: ${user.id}`)
+app.get('/user/:id', (req, res) => {
+
+  const userId = req.params.id;
+  const foundUser = users.find(user => user.id === userId);
+
+  if (foundUser) {
+    res.json({
+      id: foundUser.id,
+      name: foundUser.name,
+      email: foundUser.email,
+      profileImg: foundUser.profileImg
+    });
   } else {
-    res.send(`User ${req.params.name} could not be found!`)
+    res.send(404);
   }
-})
+
+});
 
 app.post('/user', function (req, res) {
   res.send('Got a POST request at /user')
@@ -47,8 +80,18 @@ app.put('/user', function (req, res) {
   res.send('Got a PUT request at /user')
 })
 
-app.delete('/user', function (req, res) {
-  res.send('Got a DELETE request at /user')
+app.delete('/user/:id', function (req, res) {
+
+  const userId = req.params.id;
+  const foundIndex = users.findIndex(user => user.id === userId);
+
+  if (foundIndex > -1) {
+    users.splice(foundIndex, 1);
+    res.send('User was deleted!');
+  } else {
+    res.send('User not found / could not be deleted');
+  }
+
 })
 
 
