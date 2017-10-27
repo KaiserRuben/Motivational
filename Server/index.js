@@ -18,10 +18,10 @@ server.listen(port, hostname, () => {
 // Server Port :)
 const port = 3000
 
-// import modules express and body parser
+// import modules express, hashid and body parser
 const express = require('express');
 const bodyparser = require('body-parser');
-
+const hashid = require('hashids');
 // creates constant app
 const app = express();
 
@@ -36,7 +36,8 @@ class User {
     this.password = data.password;
     this.profileImg = data.profileImg;
     // Random Id generator
-    this.id = Math.random();
+    const genedId = new hashid()
+    this.id = genedId.encode(1,2,3,4,5,6,7);
   }
 }
 // User Array, saved in json
@@ -115,14 +116,16 @@ app.post('/user', function (req, res) {
 
 app.put('/user/:id', function (req, res) {
   console.log(":: PUT User")
-  // create constant for req.params.idea and req.body
-  const userId = req.params.idea
+  // create constant for req.params.id and req.body
+  const userId = req.params.id
   const userObj = req.body
+  console.log(userObj);
   // check if something in body
   if (userObj) {
     // get index of user in array
     const foundIndex = users.findIndex(user => user.id === userId);
     // check if userIndex in Array
+    console.log(`:: PUT : INDEX OF USER ${foundIndex}`);
     if (foundIndex > -1) {
       // creates array with properties
       const allowedProperties = ['name', 'email', 'profileImg', 'password'];
@@ -136,10 +139,10 @@ app.put('/user/:id', function (req, res) {
         }
       }
     } else {
-      res.send(404)
+      res.sendStatus(404) // not found
     }
   } else {
-    res.send(400)
+    res.sendStatus(400) // bad request
   }
 })
 
