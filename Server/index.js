@@ -133,8 +133,12 @@ app.put('/user/:id', function (req, res) {
       for(let property of allowedProperties) {
         // check if the property of allowedProperties in req.body
         if(req.body.hasOwnProperty(property)) {
+          console.log("hasOwnProperty");
           // changes the users properties with the property in  the request body
           users[foundIndex][property] = req.body[property];
+          console.log(req.body[property]);
+          console.log(users[foundIndex][property]);
+          res.send(`Property ${property} of user ${users[foundIndex].id} changed to ${req.body[property]}`)
 
         }
       }
