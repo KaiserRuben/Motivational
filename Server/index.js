@@ -115,13 +115,31 @@ app.post('/user', function (req, res) {
 
 app.put('/user/:id', function (req, res) {
   console.log(":: PUT User")
+  // create constant for req.params.idea and req.body
   const userId = req.params.idea
   const userObj = req.body
+  // check if something in body
   if (userObj) {
-    const foundUser = users.find(user => user.id === userId)(
-    if (foundUser) {
+    // get index of user in array
+    const foundIndex = users.findIndex(user => user.id === userId);
+    // check if userIndex in Array
+    if (foundIndex > -1) {
+      // creates array with properties
+      const allowedProperties = ['name', 'email', 'profileImg', 'password'];
+      // index through propertys of allowedProperties
+      for(let property of allowedProperties) {
+        // check if the property of allowedProperties in req.body
+        if(req.body.hasOwnProperty(property)) {
+          // changes the users properties with the property in  the request body
+          users[foundIndex][property] = req.body[property];
 
+        }
+      }
+    } else {
+      res.send(404)
     }
+  } else {
+    res.send(400)
   }
 })
 
