@@ -6,16 +6,27 @@
     <!--<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width"> -->
     <!-- <meta http-equiv="refresh" content="2; URL=login.html"> SWeiterleitung zum Loginscreen-->
     <title>Motivational</title>
-    
+
     <script type="text/javascript">
+
+        function isPasswordCorrect(user, password) {
+            if (user === 'testuser' && password === 'testpassword') {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
         function loginValidieren() {
-            var username = document.getElementbyName("username").value;
-            alert(username);
-            
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+
+            console.log(isPasswordCorrect(username, password));
+
         }
     </script>
-    
-    
+
+
 </head>
 <body>
 <div class="content">
@@ -23,20 +34,17 @@
         <img src="bilder/login.png" alt="MOTIVATIONAL" width="100%">
     </div>
     <div class="placeholder"></div>
-    <form action="" method="get"  accept-charset="utf-8">
-    <div class="sign"> <!--Login Fenster-->
-        <input type="text" class="form" name="username" value="U S E R N A M E">
-        <input type="password" class="form" name="passwort" value="P A S S W O R D">
 
-        <button onclick="loginValidieren()" class="form button">LET'S GET MOTIVATIONAL</button>
-        </form>
+    <div class="sign"> <!--Login Fenster-->
+        <input type="text" class="form" id="username" placeholder="username">
+        <input type="password" class="form" id="password" placeholder="password">
+
+        <button onClick="loginValidieren()" class="form button">LET'S GET MOTIVATIONAL</button>
 
         <div class="text other">-  S I G N   U P  -</div>
         <div class="text">- F O R G O T   P A S S W O R D -</div>
     </div>
-    <div class="">
 
-    </div>
 </div>
 
 </body>
