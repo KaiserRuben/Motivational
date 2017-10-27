@@ -36,8 +36,9 @@ class User {
     this.password = data.password;
     this.profileImg = data.profileImg;
     // Random Id generator
-    const genedId = new hashid()
-    this.id = genedId.encode(1,2,3,4,5,6,7);
+
+    const genedId = new hashid(new Date(), 16)
+    this.id = genedId.encodeHex(1984^4);
   }
 }
 // User Array, saved in json
