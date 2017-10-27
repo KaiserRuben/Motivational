@@ -6,49 +6,35 @@
     <!--<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width"> -->
     <!-- <meta http-equiv="refresh" content="2; URL=login.html"> SWeiterleitung zum Loginscreen-->
     <title>Motivational</title>
-
+    
     <script type="text/javascript">
-
-        function isPasswordCorrect(user, password) {
-            if (user === 'testuser' && password === 'testpassword') {
-                window.location = "home.html";
-                return true;
-            } else {
-                alert("Falsches Passwort oder inkorrekter Username.");
-                return false;
-            }
-        }
-
-        function loginValidieren() {
+        function signup(){
+            var email = document.getElementById("email").value;
             var username = document.getElementById("username").value;
             var password = document.getElementById("password").value;
-
-            console.log(isPasswordCorrect(username, password));
-
         }
     </script>
-
-
+    
 </head>
 <body>
 <div class="content">
     <div class="logo">
-        <img src="bilder/login.png" alt="MOTIVATIONAL">
+        <img src="bilder/signup.png" alt="MOTIVATIONAL">
     </div>
     <div class="placeholder"></div>
+    <div class="sign"> <!--Register Fenster-->
+        <input type="email" id="email" class="form" placeholder="E M A I L">
+        <input type="text" id="username" class="form" placeholder="U S E R N A M E">
+        <input type="password" id="password" class="form" placeholder="P A S S W O R D">
 
-    <div class="sign"> <!--Login Fenster-->
-        <input type="text" class="form" id="username" placeholder="U S E R N A M E">
-        <input type="password" class="form" id="password" placeholder="P A S S W O R D ">
-
-        <button onClick="loginValidieren()" class="form button">LET'S GET MOTIVATIONAL</button>
-
+        <button onClick="signup()" class="form button">LET'S GET MOTIVATIONAL</button>
         <div class="text other"><a href="signup.html" style="color:black; text-decoration:none;">- S I G N - U P -</a></div>
         <div class="text"><a href="forgotPassword.html" style="color:black; text-decoration:none;">- F O R G O T - P A S S W O R D -</a></div>
     </div>
+    <div class="">
 
+    </div>
 </div>
 
 </body>
 </html>
-
