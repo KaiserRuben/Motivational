@@ -31,8 +31,12 @@ app.get('/user', function (req, res) {
   res.send("Got a GET request at /user")
 })
 
-app.get('/user/:id', function (req, res) {
-  res.send(`Got id at /user/:id :: id = ${req.params.id}`)
+app.get('/user/:name', function (req, res) {
+  if (req.params.name == user.name) {
+    res.send(`User registered! Id: ${user.id}`)
+  } else {
+    res.send(`User ${req.params.name} could not be found!`)
+  }
 })
 
 app.post('/user', function (req, res) {
