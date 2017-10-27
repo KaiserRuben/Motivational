@@ -5,10 +5,9 @@ body{
 }
 
 .content{
-    margin: 0 auto;
     width: 80%;
     height: 80%;
-    margin: 10%;
+    margin: 8%;
     background-color: white;
 }
 
@@ -21,7 +20,7 @@ body{
 }
 
 .placeholder{
-    height: 15px;
+    height: 12px;
     width: 100%;
 }
 
