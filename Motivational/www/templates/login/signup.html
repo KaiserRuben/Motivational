@@ -6,13 +6,37 @@
     <!--<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width"> -->
     <!-- <meta http-equiv="refresh" content="2; URL=login.html"> SWeiterleitung zum Loginscreen-->
     <title>Motivational</title>
-    
+    <script src="../../js/server.js"></script>
     <script type="text/javascript">
+        
         function signup(){
             var email = document.getElementById("email").value;
             var username = document.getElementById("username").value;
             var password = document.getElementById("password").value;
+            
+            var http = new XMLHttpRequest(); 
+            var data = new FormData();
+            data.append('name', username);
+            data.append('email', email);
+            data.append('password', password);
+            data.append('profileImg', 'noch keine bilder');
+            console.log(data);
+            console.log(serveradress);
+            http.open("POST", serveradress, true);
+
+            //Send the proper header information along with the request
+            http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+            http.onreadystatechange = function() {//Call a function when the state changes.
+        if(http.readyState == 4 && http.status == 200) {
+            console.alert(http.responseText);
+            }
         }
+        http.send(data);
+            
+        }
+        
+       
     </script>
     
 </head>

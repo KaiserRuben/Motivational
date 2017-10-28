@@ -1,0 +1,38 @@
+<svg width="106" height="84" viewBox="-1 -1 108 86" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs><style type="text/css"><![CDATA[
+    .path {
+      stroke-dasharray: 100%;
+      stroke-dashoffset: 100%;
+      animation: dash 0.5s ease-in-out forwards;
+    }
+    .path2 {
+      animation-delay: 0.3s;
+    }
+    .path3 {
+      animation-delay: 0.6s;
+    }
+    .path4 {
+      animation-delay: 1s;
+    }
+    .path5 {
+      animation-delay: 1.35s;
+    }
+    .path6 {
+      animation-delay: 1.7s;
+    }
+    .path7 {
+      animation-delay: 1.9s;
+    }
+    @keyframes dash {to {stroke-dashoffset: 0;}}
+  ]]></style></defs>
+  <line class='path path2' x1="0" y1="84" x2="0" y2="0" stroke="white"/>
+  <line class='path path2' x1="16" y1="84" x2="16" y2="0" stroke="white"/>
+  <line class='path path1' x1="0" y1="84" x2="16" y2="84" stroke="white"/>
+  <line class='path path3' x1="0" y1="0" x2="46" y2="63" stroke="white"/>
+  <line class='path path3' x1="16" y1="0" x2="62" y2="63" stroke="white"/>
+  <line class='path path4' x1="46" y1="63" x2="90" y2="0" stroke="white"/>
+  <line class='path path4' x1="62" y1="63" x2="106" y2="0" stroke="white"/>
+  <line class='path path5' x1="90" y1="0" x2="90" y2="84" stroke="white"/>
+  <line class='path path5' x1="106" y1="0" x2="106" y2="84" stroke="white"/>
+  <line class='path path6' x1="90" y1="84" x2="106" y2="84" stroke="white"/>
+</svg>
