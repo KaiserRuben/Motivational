@@ -128,6 +128,25 @@ app.post('/user', function (req, res) {
   }
 })
 
+app.post('/login', function (req, res) {
+  console.log(req.body)
+  // -- res.send(req.body)
+  // if something in requests body
+  if (req.body) {
+    const userdata = usercollection.find({id:req.body.id})
+    if (userdata) {
+      userdata.toArray((err, docs) => {
+        if (userdata.password === req.body.password) {
+          res.sendStatus(202) // Accepted
+        } else {
+          res.sendStatus(401) // Unautorized
+        }
+    });
+  } else {
+    res.send(400) // bad request
+  }
+})
+
 app.put('/user/:id', function (req, res) {
   console.log(":: PUT User")
   // create constant for req.params.id and req.body
