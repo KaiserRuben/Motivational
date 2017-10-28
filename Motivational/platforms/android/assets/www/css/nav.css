@@ -15,40 +15,30 @@ body{
     background-color: black;
 }
 
+.navicon{
+    height: 1em;
+    vertical-align: middle;
+}
+
 .nav{
-    height: 60%;
-    width: 100%;
-
-
-}
-@media only screen and (max-width: 380px) {
-    .navbar {
-        height: 100%;
-        width: 29.33%;
-        float: left;
-        padding: 3.5% 2%;
-
-    }
-
-}
-@media only screen and (min-width: 380px) and (max-width: 500px) {
-    .navbar {
-        height: 100%;
-        width: 29.33%;
-        float: left;
-        padding: 1.5% 2%;
-
-    }
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    color: white;
+    display:flex;
+    justify-content: space-between;
+    background-color: black;
+    padding: 0 2vw;
+    font-size: 24px;
 }
 
-.left {
-    text-align: left;
+.navbar{
+    float: left;
+    flex: 0 0 auto;
 }
 
-.middle {
-    text-align: center;
-}
-
-.right {
-    text-align: right;
+.navblock{
+    display: block;
+    padding: 3vh 3vw;
 }
