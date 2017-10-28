@@ -1,5 +1,5 @@
 
-// Server v0.0.15
+// Server v0.0.16
 // branch : backend
 // person in charge: toorusr (MAX)
 
@@ -10,17 +10,18 @@ const port = 3000   // Server Port :)
 const express = require('express');
 const bodyparser = require('body-parser');
 const hashid = require('hashids');
-// postgresql import
-const database = new (require('pg').Client)()
-
+const util = require('util');
+const database = require('mongo').MongoClient;
+const datab = util.promisify(database.connect)
 // creates constant app
 const app = express();
-
+let db
+let usercollection
 const start = async () => {
   // connect to database
-  database.connect()
+  db = await datab.connect()
+  usercollection = db.collection('user')
   // check if table exists and create one if not
-  const table = await database.query('')
   app.listen(port, function () {
       console.log(`Example app listening on port ${port}!`)
   })
@@ -81,14 +82,7 @@ const users = [
 // gives user data back (json formaf)
 app.get('/user', function (req, res) {
   // sends response in json format
-  res.json(users.map( ({ id, name, email, profileImg }) => {
-    return {
-      id,
-      name,
-      email,
-      profileImg
-    }
-  }));
+  res.json(usercollection.find({}));
 })
 // gets back specific user by id
 app.get('/user/:id', (req, res) => {
@@ -120,7 +114,7 @@ app.post('/user', function (req, res) {
   // if something in requests body
   if (req.body) {
     const tmpUsr = new User(req.body)
-    users.push(tmpUsr)
+    usercollection.insert(req.body)
     res.json(tmpUsr)
   } else {
     res.send(400) // bad request
@@ -175,6 +169,9 @@ app.delete('/user/:id', function (req, res) {
     res.send('User not found / could not be deleted');
   }
 
+})
+app.get('/', (req, res) => {
+  res.sendStatus(200)
 })
 
 start()
