@@ -32,7 +32,7 @@ const start = async () => {
 
 // database query function
 class DatabaseRoutings {
-  static async post (name, email, password, profileImg) {
+  static async post (name, email, username, password, profileImg) {
     const res = await databaseClient.query('')
   }
 }
@@ -50,6 +50,7 @@ class User {
   constructor(data) {
     this.name = data.name;
     this.email = data.email;
+    this.username = data.username;
     this.password = data.password;
     this.profileImg = data.profileImg;
     // Random Id generator
@@ -103,6 +104,7 @@ app.get('/user/:id', (req, res) => {
       id: foundUser.id,
       name: foundUser.name,
       email: foundUser.email,
+      username: foundUser.username,
       profileImg: foundUser.profileImg
     });
   } else {
@@ -132,20 +134,21 @@ app.post('/login', function (req, res) {
   console.log(req.body)
   // -- res.send(req.body)
   // if something in requests body
-  if (req.body) {
-    const userdata = usercollection.find({id:req.body.id})
+  if (req.body.username) {
+    const userdata = usercollection.find({username:req.body.username})
     if (userdata) {
       userdata.toArray((err, docs) => {
+        console.log(`1PSW: ${userdata.password.password} === ${req.body.password}`);
+        console.log(`2USR: ${userdata.username} === ${req.body.username}`);
         if (userdata.password === req.body.password) {
           res.sendStatus(202) // Accepted
         } else {
           res.sendStatus(401) // Unautorized
-        }
-    });
-  } else {
-    res.send(400) // bad request
-  }
-})
+        }});
+    } else {
+        res.sendStatus(400) // bad request
+}}})
+
 
 app.put('/user/:id', function (req, res) {
   console.log(":: PUT User")
