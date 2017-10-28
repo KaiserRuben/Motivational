@@ -11,7 +11,7 @@ const express = require('express');
 const bodyparser = require('body-parser');
 const hashid = require('hashids');
 const util = require('util');
-const database = require('mongo').MongoClient;
+const database = require('mongodb').MongoClient;
 const datab = util.promisify(database.connect)
 const expcors = require('express-cors')
 // creates constant app
@@ -20,7 +20,7 @@ let db
 let usercollection
 const start = async () => {
   // connect to database
-  db = await datab.connect()
+  db = await datab.connect('mongodb://localhost:27017')
   usercollection = db.collection('user')
   // check if table exists and create one if not
   app.listen(port, function () {
@@ -83,7 +83,10 @@ const users = [
 // gives user data back (json formaf)
 app.get('/user', function (req, res) {
   // sends response in json format
-  res.json(usercollection.find({}));
+  console.log(usercollection.find({}));
+  usercollection.find({}).toArray((err, docs) => {
+    res.json(docs)
+  });
 })
 // gets back specific user by id
 app.get('/user/:id', (req, res) => {
