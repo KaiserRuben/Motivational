@@ -1,29 +1,41 @@
-/*
-const http = require('http');
 
-const hostname = '127.0.0.1';
-const port = 3000;
+// Server v0.0.15
+// branch : backend
+// person in charge: toorusr (MAX)
 
-const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('<b>Hello World</b>\n');
-});
 
-server.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
-});
-*/
-
-// Server Port :)
-const port = 3000
+const port = 3000   // Server Port :)
 
 // import modules express, hashid and body parser
 const express = require('express');
 const bodyparser = require('body-parser');
 const hashid = require('hashids');
+// postgresql import
+const database = new (require('pg').Client)()
+
 // creates constant app
 const app = express();
+
+const start = async () => {
+  // connect to database
+  database.connect()
+  // check if table exists and create one if not
+  const table = await database.query('')
+  app.listen(port, function () {
+      console.log(`Example app listening on port ${port}!`)
+  })
+}
+
+/// DATABASE
+// new databaseClient
+
+// database query function
+class DatabaseRoutings {
+  static async post (name, email, password, profileImg) {
+    const res = await databaseClient.query('')
+  }
+}
+/// DATABASE END
 
 // use constant bodyparser (in json) in  express app
 app.use(bodyparser.json());
@@ -38,7 +50,7 @@ class User {
     // Random Id generator
 
     const genedId = new hashid(new Date(), 16)
-    this.id = genedId.encodeHex(1984^4);
+    this.id = genedId.encodeHex(1984^4 + Math.random());
   }
 }
 // User Array, saved in json
@@ -165,7 +177,4 @@ app.delete('/user/:id', function (req, res) {
 
 })
 
-
-app.listen(port, function () {
-    console.log(`Example app listening on port ${port}!`)
-})
+start()
