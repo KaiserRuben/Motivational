@@ -1,0 +1,49 @@
+﻿body{
+    padding: 0;
+    margin: 0;
+    background-color: white;
+}
+
+.content{
+    width: 80%;
+    height: 80%;
+    margin: 8%;
+    background-color: white;
+}
+
+.logo{
+
+    width: 50%;
+    height: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.placeholder{
+    height: 12px;
+    width: 100%;
+}
+
+.form{
+    width: 100%;
+    margin-top: 10%;
+    padding: 5% 0;
+    border: solid 1px;
+    font-family: Helvetica;
+    background-color: white;
+    text-align: center;
+}
+
+.text{
+    color: black;
+    text-align: center;
+    margin-top: 2%;
+    font-family: Helvetica;
+    font-size: 14px;
+}
+
+.other{
+    margin-top: 15%;
+}
+
+

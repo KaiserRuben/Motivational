@@ -5,11 +5,13 @@
   "cordova": {
     "platforms": [
       "android",
-      "ios"
+      "ios",
+      "windows"
     ]
   },
   "dependencies": {
     "cordova-android": "~6.3.0",
-    "cordova-ios": "~4.5.2"
+    "cordova-ios": "~4.5.2",
+    "cordova-windows": "^5.0.0"
   }
 }
