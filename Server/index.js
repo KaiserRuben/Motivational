@@ -13,7 +13,6 @@ const hashid = require('hashids');
 const util = require('util');
 const database = require('mongodb').MongoClient;
 const datab = util.promisify(database.connect)
-const expcors = require('express-cors')
 // creates constant app
 const app = express();
 let db
@@ -41,7 +40,11 @@ class DatabaseRoutings {
 
 // use constant bodyparser (in json) in  express app
 app.use(bodyparser.json());
-app.use(expcors({allowedOrigins: ["*"]}))
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 // create class user and sets parameters using constructor
 class User {
   constructor(data) {
@@ -83,7 +86,7 @@ const users = [
 // gives user data back (json formaf)
 app.get('/user', function (req, res) {
   // sends response in json format
-  console.log(usercollection.find({}));
+  // console.log(usercollection.find({}));
   usercollection.find({}).toArray((err, docs) => {
     res.json(docs)
   });
