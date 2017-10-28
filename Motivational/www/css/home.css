@@ -16,7 +16,7 @@
 
 @media only screen and (min-width: 380px) and (max-width: 500px) {
     .crown {
-        width: 80vw;
+        height: 30vh;
         margin: 10% auto 0 auto;
     }
 
@@ -27,5 +27,15 @@
     }
 }
 
+@media only screen and (min-width: 500px) {
+    .crown {
+        height: 30vh;
+        margin: 10% auto 0 auto;
+    }
 
-
+    .score {
+        text-align: center;
+        font-family: Helvetica;
+        font-size: 5vh;
+    }
+}

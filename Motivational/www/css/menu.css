@@ -1,8 +1,4 @@
-.content{
-    width: 80%;
-    margin: 8%;
-    background-color: white;
-}
+
 
 .but{
     width: 80%;
@@ -19,10 +15,3 @@
     text-align: center;
 }
 
-.headline{
-    color: black;
-    text-align: center;
-    margin-top: 2%;
-    font-family: Helvetica;
-    font-size: 16px;
-}

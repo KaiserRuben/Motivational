@@ -8,18 +8,21 @@
     <title>Motivational</title>
     <script src="../../js/server.js"></script>
     <script type="text/javascript">
-        
         function signup(){
             var email = document.getElementById("email").value;
             var username = document.getElementById("username").value;
             var password = document.getElementById("password").value;
-            
+            var name = document.getElementById("name").value;
+            if(email==""||name==""||username==""||password==""){
+                alert("Please enter password, username and e-mail!","Fill in all fields.");
+            }else{
             var http = new XMLHttpRequest(); 
             var data ={};
             data.name=username;
             data.email=email;
             data.password=password;
             data.profileImg="no pic";
+            data.name=name;
             console.log(data);
             console.log(serveradress);
             http.open("POST", serveradress, true);
@@ -30,11 +33,13 @@
         if(http.readyState === 4 && http.status === 200) {
             console.log(http.responseText);
             window.location = "../pages/home.html";
+            }else{
+                console.log("ein fehler");
             }
         }
         http.send(JSON.stringify(data));
         
-            
+        }
         }
         
        
@@ -48,11 +53,13 @@
     </div>
     <div class="placeholder"></div>
     <div class="sign"> <!--Register Fenster-->
+        <form>
+        <input type="text" id="name" class="form" placeholder="N A M E">
         <input type="email" id="email" class="form" placeholder="E M A I L">
         <input type="text" id="username" class="form" placeholder="U S E R N A M E">
         <input type="password" id="password" class="form" placeholder="P A S S W O R D">
 
-        <button onClick="signup()" class="form button">LET'S GET MOTIVATIONAL</button>
+        <button onClick="signup()" class="form button">LET'S GET MOTIVATIONAL</button></form>
         <div class="text other"><a href="login.html" style="color:black; text-decoration:none;">- L O G - I N -</a></div>
         <div class="text"><a href="forgotPassword.html" style="color:black; text-decoration:none;">- F O R G O T - P A S S W O R D -</a></div>
     </div>

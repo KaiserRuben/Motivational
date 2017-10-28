@@ -10,14 +10,32 @@
     <script type="text/javascript">
         var cookieset = false;
         function isPasswordCorrect(user, password) {
-            if (user === 'admin' && password === '12345') {
+            
+            var loginrequest = new XMLHttpRequest(); 
+            var data ={};
+            data.name=user;
+            data.password=password;
+            
+            console.log(serveradress);
+            
+            http.open("POST", serveradress, true);
+            http.setRequestHeader("Content-type", "application/json");
+            http.onreadystatechange = function() {//Call a function when the state changes.
+                
+        if(http.readyState === 4 && http.status === 200) {
+            if(loginrequest.statusText==202){
                 window.location = "../pages/home.html";
-                return true;
-            } else {
+            }else{
+                console.log(loginrequest.statusText);
+            }
+            return true;
+            }
+            else {
                 alert("Falsches Passwort oder inkorrekter Username.");
                 return false;
-            }
         }
+        http.send(JSON.stringify(data));
+    }}
 
         function loginValidieren() {
 
