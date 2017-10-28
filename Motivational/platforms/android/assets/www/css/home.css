@@ -1,40 +1,6 @@
-body{
-    padding: 0;
-    margin: 0;
-    background-color: white;
-    height: 100vh;
-}
 
-.home{
-    width: 100%;
-    height: 100%;
-
-
-}
-
-.header{
-    height: 10vh;
-    background-color: black;
-}
-
-.nav{
-    height: 60%;
-    width: 100%;
-
-
-}
 
 @media only screen and (max-width: 380px) {
-    .navbar {
-        height: 100%;
-        width: 29.33%;
-        float: left;
-        padding: 3.5% 2%;
-
-    }
-
-
-
     .crown {
         width: 80vw;
         margin: 10% auto 0 auto;
@@ -46,17 +12,9 @@ body{
         font-size: 5vh;
     }
 }
+
+
 @media only screen and (min-width: 380px) and (max-width: 500px) {
-    .navbar {
-        height: 100%;
-        width: 29.33%;
-        float: left;
-        padding: 1.5% 2%;
-
-    }
-
-
-
     .crown {
         width: 80vw;
         margin: 10% auto 0 auto;
@@ -67,18 +25,6 @@ body{
         font-family: Helvetica;
         font-size: 5vh;
     }
-}
-
-.menu {
-    text-align: left;
-}
-
-.logo {
-    text-align: center;
-}
-
-.settings {
-    text-align: right;
 }
 
 
