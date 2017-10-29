@@ -8,36 +8,45 @@
     <title>Motivational</title>
     <script src="../../js/server.js"></script>
     <script type="text/javascript">
+        function emailreplace(emailold){
+            var emailnew = emailold.replace(/@/g, "(at)");
+            console.log(emailnew);
+            return emailnew;
+        }
         function signup(){
-            var email = document.getElementById("email").value;
+            var email = emailreplace(document.getElementById("email").value);
             var username = document.getElementById("username").value;
             var password = document.getElementById("password").value;
             var name = document.getElementById("name").value;
             if(email==""||name==""||username==""||password==""){
-                alert("Please enter password, username and e-mail!","Fill in all fields.");
+                alert("Please enter Password, Name, Username and E-Mail!","Fill in all fields.");
             }else{
-            var http = new XMLHttpRequest(); 
+            var xhr = new XMLHttpRequest(); 
             var data ={};
-            data.name=username;
+            data.username=username;
             data.email=email;
             data.password=password;
             data.profileImg="no pic";
             data.name=name;
             console.log(data);
             console.log(serveradress);
-            http.open("POST", serveradress, true);
+            xhr.open("POST", serveradress, true);
 
-            http.setRequestHeader("Content-type", "application/json");
+            xhr.setRequestHeader("Content-type", "application/json");
 
-            http.onreadystatechange = function() {//Call a function when the state changes.
-        if(http.readyState === 4 && http.status === 200) {
-            console.log(http.responseText);
+            xhr.onreadystatechange = function() {//Call a function when the state changes.
+        if(xhr.status === 200) {
+            console.log(xhr.responseText);
             window.location = "../pages/home.html";
-            }else{
+            }/*else{
                 console.log("ein fehler");
-            }
-        }
-        http.send(JSON.stringify(data));
+                console.log(xhr.responseText);
+                console.log(xhr.readyState);
+                console.log(xhr.status);
+                alert("Hallo, i bims, eins Server, ich habe gerade keine Lust, aber du kriegst den responseText ("+xhr.responseText+"), den readyState ("+xhr.readyState+") und den Status ("+xhr.status+").");
+            }*/
+        };
+        xhr.send(JSON.stringify(data));
         
         }
         }
@@ -49,7 +58,7 @@
 <body>
 <div class="content">
     <div class="logo">
-        <img src="../../bilder/signup.png" alt="MOTIVATIONAL" width="100%">
+        <img src="../../bilder/signup.svg" alt="MOTIVATIONAL" width="100%">
     </div>
     <div class="placeholder"></div>
     <div class="sign"> <!--Register Fenster-->

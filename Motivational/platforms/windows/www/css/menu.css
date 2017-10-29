@@ -1,0 +1,17 @@
+﻿
+
+.but{
+    width: 80%;
+    margin: 0 auto;
+}
+
+.form{
+    width: 100%;
+    margin-top: 10%;
+    padding: 5% 0;
+    border: solid 1px;
+    font-family: Helvetica;
+    background-color: white;
+    text-align: center;
+}
+
