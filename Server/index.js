@@ -4,7 +4,7 @@
 // person in charge: toorusr (MAX)
 
 
-const port = 3000   // Server Port :)
+const port = 3002   // Server Port :)
 
 // import modules express, hashid and body parser
 const express = require('express');
@@ -137,7 +137,7 @@ app.post('/login', function (req, res) {
     usercollection.find({username:req.body.username}).limit(1).next((err, docs) => {
       if (docs) {
         console.log(docs);
-        console.log(`1PSW: ${docs.password.password} === ${req.body.password}`);
+        console.log(`1PSW: ${docs.password} === ${req.body.password}`);
         console.log(`2USR: ${docs.username} === ${req.body.username}`);
         if (docs.password === req.body.password) {
           res.sendStatus(202) // Accepted
