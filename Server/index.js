@@ -134,8 +134,9 @@ app.post('/login', function (req, res) {
   console.log(req.body)
   // if something in requests body
   if (req.body.username) {
-    usercollection.find({username:req.body.username}, (err, docs) => {
+    usercollection.find({username:req.body.username}).limit(1).next((err, docs) => {
       if (docs) {
+        console.log(docs);
         console.log(`1PSW: ${docs.password.password} === ${req.body.password}`);
         console.log(`2USR: ${docs.username} === ${req.body.username}`);
         if (docs.password === req.body.password) {
