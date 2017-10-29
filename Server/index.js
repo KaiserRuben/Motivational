@@ -132,23 +132,20 @@ app.post('/user', function (req, res) {
 
 app.post('/login', function (req, res) {
   console.log(req.body)
-  // -- res.send(req.body)
   // if something in requests body
   if (req.body.username) {
-    const userdata = usercollection.find({username:req.body.username})
-    if (userdata) {
-      userdata.toArray((err, docs) => {
-        console.log(`1PSW: ${userdata.password.password} === ${req.body.password}`);
-        console.log(`2USR: ${userdata.username} === ${req.body.username}`);
-        if (userdata.password === req.body.password) {
+    usercollection.find({username:req.body.username}, (err, docs) => {
+      if (docs) {
+        console.log(`1PSW: ${docs.password.password} === ${req.body.password}`);
+        console.log(`2USR: ${docs.username} === ${req.body.username}`);
+        if (docs.password === req.body.password) {
           res.sendStatus(202) // Accepted
         } else {
           res.sendStatus(401) // Unautorized
         }});
-    } else {
+      } else {
         res.sendStatus(400) // bad request
-}}})
-
+      }}})})
 
 app.put('/user/:id', function (req, res) {
   console.log(":: PUT User")
