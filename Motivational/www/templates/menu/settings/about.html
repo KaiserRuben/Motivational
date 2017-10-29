@@ -5,18 +5,27 @@
     <meta charset="UTF-8">
 </head>
 <body>
+<script type="text/javascript">
+    function goBack(){
+        console.log("Go back...");
+        history.back();
+    }
+</script>
+
     <div class="home">
 
         <ul class="nav">
-            <li class="navbar"><a class="navblock" href="../../menu/menu.html"><img src="../../../bilder/menu-icon.svg" class="navicon"></a></li>
+            <li class="navbar"><a class="navblock" href="javascript:goBack()"><img src="../../../bilder/icon-back.svg" class="navicon"></a></li>
             <li class="navbar"><a class="navblock"><img src="../../../bilder/logo.svg" class="navicon"></a></li>
-            <li class="navbar"><a class="navblock" href="../../menu/settings/settings.html"><img src="../../../bilder/settings-icon.svg" class="navicon"></a></li>
+            <li class="navbar"><a class="navblock"><img src="../../../bilder/transparent.png" class="navicon"></a></li>
         </ul>
 
         <div class="content">
             <div class="headline">A B O U T - M O T I V A T I O N A L</div>
             <hr />
-            Our intention is to motivate young people to do things that they would otherwise not do.
+            <div class="big">Our intention is to motivate young people to do things that they would otherwise not do. <br />
+            With this we share a great social aspect as we can only achieve what we would individually not be motivated to do as a society. <br />
+            Competing with friends and enemies drives us to do things because we want to be better than other.</div>
 
 
         </div>

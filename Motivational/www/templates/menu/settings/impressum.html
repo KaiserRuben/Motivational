@@ -7,12 +7,20 @@
     <meta charset="UTF-8">
 </head>
 <body>
+
+<script type="text/javascript">
+    function goBack(){
+        console.log("Go back...");
+        history.back();
+    }
+</script>
+
     <div class="home">
 
         <ul class="nav">
-            <li class="navbar"><a class="navblock" href="../../menu/menu.html"><img src="../../../bilder/menu-icon.svg" class="navicon"></a></li>
+            <li class="navbar"><a class="navblock" href="javascript:goBack()"><img src="../../../bilder/icon-back.svg" class="navicon"></a></li>
             <li class="navbar"><a class="navblock"><img src="../../../bilder/logo.svg" class="navicon"></a></li>
-            <li class="navbar"><a class="navblock" href="../../menu/settings/settings.html"><img src="../../../bilder/settings-icon.svg" class="navicon"></a></li>
+            <li class="navbar"><a class="navblock"><img src="../../../bilder/transparent.png" class="navicon"></a></li>
         </ul>
 
         <div class="content">
@@ -27,7 +35,7 @@
             <i>Frontend Entwicklung:</i><br />
             Chantal Mielenz <br />
             <br />
-            <i>Backend Éntwicklung:</i> <br />
+            <i>Backend Ewicklung:</i> <br />
             Ruben Kaiser, Max Jendrall<br />
 
             <hr />

@@ -6,16 +6,16 @@
     <!--<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width"> -->
     <!-- <meta http-equiv="refresh" content="2; URL=login.html"> SWeiterleitung zum Loginscreen-->
     <title>Motivational</title>
-    <script src="../../js/server.js"></script>
+    <script src="../../js/serverlogin.js"></script>
     <script type="text/javascript">
         var cookieset = false;
+        var http = new XMLHttpRequest(); 
         function isPasswordCorrect(user, password) {
             if(user=="admin"){
                 window.location = "../pages/home.html";
             }else{
-            var loginrequest = new XMLHttpRequest(); 
             var data ={};
-            data.name=user;
+            data.username=user;
             data.password=password;
             
             console.log(serveradress);
@@ -25,10 +25,10 @@
             http.onreadystatechange = function() {//Call a function when the state changes.
                 
         if(http.readyState === 4 && http.status === 200) {
-            if(loginrequest.statusText==202){
+            if(loginrequest.statusText=="Accepted"){
                 window.location = "../pages/home.html";
             }else{
-                console.log(loginrequest.statusText);
+                console.log(http.statusText);
             }
             return true;
             }
@@ -98,7 +98,6 @@
 
         <div class="text other"><a href="signup.html" style="color:black; text-decoration:none;">- S I G N - U P -</a></div>
         <div class="text"><a href="forgotPassword.html" style="color:black; text-decoration:none;">- F O R G O T - P A S S W O R D -</a></div>
-        <a href="http://192.168.8.118:3000/user">Servertest</a>
     </div>
 
 </div>

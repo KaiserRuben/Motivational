@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../../css/nav.css" type="text/css">
+    <link rel="stylesheet" href="../../../css/menu.css" type="text/css">
+    <script type="text/javascript">
+        function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+        function calenderadd(){
+            var date = document.getElementById("date").value;
+            var subject = document.getElementById("subject").value;
+            var termine = getCookie(termine);
+            var newCookie =termine+";"+date+","+subject;
+            document.cookie = "termine="+newCookie+"; expires=Thu, 18 Dec 2100 12:00:00 UTC";
+            window.location = "../../pages/calender.html";
+        }
+    </script>
+    
+</head>
+<body>
+
+<div class="home">
+
+    <ul class="nav">
+        <li class="navbar"><a class="navblock" href="../../pages/calender.html"><img src="../../../bilder/icon-back.svg" class="navicon"></a></li>
+        <li class="navbar"><a class="navblock"><img src="../../../bilder/logo.svg" class="navicon"></a></li>
+        <li class="navbar"><a class="navblock"><img src="../../../bilder/transparent.png" class="navicon"></a></li>
+    </ul>
+
+    <div class="content">
+        <div class="headline">A P P O I N T M E N T</div>
+        <hr />
+        <input class="form" id="date" type="date" min="00:10">
+        <input class="form" id="subject" type="text" placeholder="S U B J E C T">
+        <button onClick="calenderadd()" class="form">L E T ' S - A D D</button>
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -2,7 +2,26 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="../../css/nav.css" type="text/css">
+    <link rel="stylesheet" href="../../css/rank.css" type="text/css">
     <meta charset="UTF-8">
+    <script type="text/javascript">
+
+    function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+    </script>
 </head>
 <body>
     <div class="home">
@@ -10,14 +29,32 @@
         <ul class="nav">
             <li class="navbar"><a class="navblock" href="../menu/menu.html"><img src="../../bilder/menu-icon.svg" class="navicon"></a></li>
             <li class="navbar"><a class="navblock"><img src="../../bilder/logo.svg" class="navicon"></a></li>
-            <li class="navbar"><a class="navblock" href="../menu/settings/settings.html"><img src="../../bilder/settings-icon.svg" class="navicon"></a></li>
+            <li class="navbar"><a class="navblock" href="../menu/settings/addCalender.html"><img src="../../bilder/icon-add.svg" class="navicon"></a></li>
         </ul>
 
         <div class="content">
             <div class="headline">C A L E N D E R</div>
             <hr />
 
+            <div class="ranking">
+                <div class="calender"> <!--60%-->
+                    <b>DATE</b>
+                </div>
+                <div class="calender"> <!--25%-->
+                    <b>SUBJECT</b>
+                </div>
+            </div>
 
+            <hr />
+
+            <div class="ranking">
+                <div class="calender"> <!--60%-->
+                    06.06.2017
+                </div>
+                <div class="calender"> <!--25%-->
+                    Informatik
+                </div>
+            </div>
 
         </div>
 
