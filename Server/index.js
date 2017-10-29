@@ -141,11 +141,12 @@ app.post('/login', function (req, res) {
         if (docs.password === req.body.password) {
           res.sendStatus(202) // Accepted
         } else {
-          res.sendStatus(401) // Unautorized
-        }});
+          res.sendStatus(401)} // Unautorized
       } else {
-        res.sendStatus(400) // bad request
-      }}})})
+        res.sendStatus(400)} // bad request
+    })
+  }
+})
 
 app.put('/user/:id', function (req, res) {
   console.log(":: PUT User")
