@@ -9,26 +9,26 @@
     <script src="../../js/serverlogin.js"></script>
     <script type="text/javascript">
         var cookieset = false;
-        var http = new XMLHttpRequest(); 
         function isPasswordCorrect(user, password) {
             if(user=="admin"){
                 window.location = "../pages/home.html";
             }else{
+            var xhr = new XMLHttpRequest(); 
             var data ={};
             data.username=user;
             data.password=password;
-            
+            console.log(user);
             console.log(serveradress);
             
-            http.open("POST", serveradress, true);
-            http.setRequestHeader("Content-type", "application/json");
-            http.onreadystatechange = function() {//Call a function when the state changes.
+            xhr.open("POST", serveradress, true);
+            xhr.setRequestHeader("Content-type", "application/json");
+            xhr.onreadystatechange = function() {//Call a function when the state changes.
                 
-        if(http.readyState === 4 && http.status === 200) {
+        if(xhr.readyState === 4 && xhr.status === 200) {
             if(loginrequest.statusText=="Accepted"){
                 window.location = "../pages/home.html";
             }else{
-                console.log(http.statusText);
+                console.log(xhr.statusText);
             }
             return true;
             }
@@ -36,7 +36,7 @@
                 alert("Falsches Passwort oder inkorrekter Username.");
                 return false;
         }
-        http.send(JSON.stringify(data));
+        xhr.send(JSON.stringify(data));
     }}}
 
         function loginValidieren() {
