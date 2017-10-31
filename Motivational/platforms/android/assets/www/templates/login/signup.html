@@ -38,13 +38,13 @@
         if(xhr.status === 200) {
             console.log(xhr.responseText);
             window.location = "../pages/home.html";
-            }/*else{
+            }else{
                 console.log("ein fehler");
                 console.log(xhr.responseText);
                 console.log(xhr.readyState);
                 console.log(xhr.status);
                 alert("Hallo, i bims, eins Server, ich habe gerade keine Lust, aber du kriegst den responseText ("+xhr.responseText+"), den readyState ("+xhr.readyState+") und den Status ("+xhr.status+").");
-            }*/
+            }
         };
         xhr.send(JSON.stringify(data));
         

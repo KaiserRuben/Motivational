@@ -6,8 +6,8 @@
     <meta charset="UTF-8">
     <script type="text/javascript">
 
-    function getCookie(cname) {
-    var name = cname + "=";
+    function getCookie() {
+    var name = "termine=";
     var decodedCookie = decodeURIComponent(document.cookie);
     var ca = decodedCookie.split(';');
     for(var i = 0; i <ca.length; i++) {
@@ -22,13 +22,16 @@
     return "";
 }
 function cookiereader(){
-    var ccalender = getCookie("termine");
+    var ccalender = getCookie();
     console.log(ccalender);
-    var singleTermin = ccalender.split(",");
-    for(var u = 0; u < singleTermin.length; u++){
-        singleTermin[u] = singleTermin[u].split(";");
+    var timesplit = ccalender.split("_");
+    var events = timesplit[0];
+    console.log(events);
+    var event = events.split("|");
+    for(var u = 0; u < event.length; u++){
+        event[u] = event[u].split("#");
     }
-    return singleTermin;
+    return event;
 }
     </script>
 </head>
@@ -55,25 +58,28 @@ function cookiereader(){
             </div>
 
             <hr />
-
-            <div class="ranking">
-                <div class="calender"> <!--60%-->
-                    06.06.2017
-                </div>
-                <div class="calender"> <!--25%-->
-                    Informatik
-                </div>
-            </div>
             <script type="text/javascript">
-                document.write(cookiereader());
-                console.log(cookiereader());
-                var terminArray = cookiereader();
-                for(var a=0; a<terminArray.length;a++){
-                    console.log(a);
-                    console.log(terminArray[a][1]);
-                    console.log(terminArray[a][2]);
-
+                var eventArray = cookiereader();
+                
+                for(var a=1; a<eventArray.length;a++){
+                    document.write("<div class='ranking'>");
+                    document.write("<div class='calender'> <!--60%-->");
+                    var date = eventArray[a][0].split("-");
+                    
+                    for(var p = 2; p>=0;p--){
+                        document.write(date[p]);
+                        if(p!=0){
+                            document.write(".");
+                        }
+                    }
+                    document.write("</div>");
+                    document.write("<div class='calender'> <!--25%-->");
+                    document.write(eventArray[a][1]);
+                    document.write("</div>");
+                    document.write("</div>");
+                    document.write("<hr />");
                 }
+            
             </script>
         </div>
 

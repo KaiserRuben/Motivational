@@ -23,7 +23,7 @@
         function calenderadd(){
             var date = document.getElementById("date").value;
             var subject = document.getElementById("subject").value;
-            var termine = getCookie(termine);
+            var termine = getCookie("termine");
             var newCookie =termine+";"+date+","+subject;
             document.cookie = "termine="+newCookie+"; expires=Thu, 18 Dec 2100 12:00:00 UTC";
             window.location = "../../pages/calender.html";

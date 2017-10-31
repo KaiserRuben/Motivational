@@ -5,8 +5,9 @@
     <link rel="stylesheet" href="../../../css/nav.css" type="text/css">
     <link rel="stylesheet" href="../../../css/menu.css" type="text/css">
     <script type="text/javascript">
-        function getCookie(cname) {
-    var name = cname + "=";
+        function getCookie() {
+            console.log("Cookie wird gesucht");
+    var name = "termine=";
     var decodedCookie = decodeURIComponent(document.cookie);
     var ca = decodedCookie.split(';');
     for(var i = 0; i <ca.length; i++) {
@@ -16,6 +17,7 @@
         }
         if (c.indexOf(name) == 0) {
             return c.substring(name.length, c.length);
+            consloe.log("Cookie gefunden, Inhlt:"+c.substring(name.length, c.length));
         }
     }
     return "";
@@ -23,9 +25,13 @@
         function calenderadd(){
             var date = document.getElementById("date").value;
             var subject = document.getElementById("subject").value;
-            var termine = getCookie("termine");
-            var newCookie =termine+";"+date+","+subject;
-            document.cookie = "termine="+newCookie+"; expires=Thu, 18 Dec 2100 12:00:00 UTC";
+            var oldCookie = getCookie();
+            var termine = oldCookie.split("_");
+            console.log(termine[0]);
+            var newCookie =termine[0]+"|"+date+"#"+subject+"_";
+            document.cookie = "termine="+newCookie+" expires=Thu, 18 Dec 2099 12:00:00 UTC; path=/";
+            console.log(newCookie);
+            console.log(document.cookie);
             window.location = "../../pages/calender.html";
         }
     </script>
