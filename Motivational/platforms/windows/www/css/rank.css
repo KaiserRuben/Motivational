@@ -1,0 +1,19 @@
+﻿.ranking{
+    display:flex;
+    font-family: Helvetica;
+
+}
+
+.rank{
+    width: 15%;
+}
+
+.friendname{
+    width: 60%;
+
+}
+
+.score{
+    width: 25%;
+}
+

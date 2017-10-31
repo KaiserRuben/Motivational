@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link href="../../css/login.css" rel="stylesheet" type="text/css">
+    <!--<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width"> -->
+    <!-- <meta http-equiv="refresh" content="2; URL=login.html"> SWeiterleitung zum Loginscreen-->
+    <title>Motivational</title>
+    <script src="../../js/server.js"></script>
+    <script type="text/javascript">
+        function emailreplace(emailold){
+            var emailnew = emailold.replace(/@/g, "(at)");
+            console.log(emailnew);
+            return emailnew;
+        }
+        function signup(){
+            var email = emailreplace(document.getElementById("email").value);
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+            var name = document.getElementById("name").value;
+            if(email==""||name==""||username==""||password==""){
+                alert("Please enter Password, Name, Username and E-Mail!","Fill in all fields.");
+            }else{
+            var xhr = new XMLHttpRequest(); 
+            var data ={};
+            data.username=username;
+            data.email=email;
+            data.password=password;
+            data.profileImg="no pic";
+            data.name=name;
+            console.log(data);
+            console.log(serveradress);
+            xhr.open("POST", serveradress, true);
+
+            xhr.setRequestHeader("Content-type", "application/json");
+
+            xhr.onreadystatechange = function() {//Call a function when the state changes.
+        if(xhr.status === 200) {
+            console.log(xhr.responseText);
+            window.location = "../pages/home.html";
+            }/*else{
+                console.log("ein fehler");
+                console.log(xhr.responseText);
+                console.log(xhr.readyState);
+                console.log(xhr.status);
+                alert("Hallo, i bims, eins Server, ich habe gerade keine Lust, aber du kriegst den responseText ("+xhr.responseText+"), den readyState ("+xhr.readyState+") und den Status ("+xhr.status+").");
+            }*/
+        };
+        xhr.send(JSON.stringify(data));
+        
+        }
+        }
+        
+       
+    </script>
+    
+</head>
+<body>
+<div class="content">
+    <div class="logo">
+        <img src="../../bilder/signup.svg" alt="MOTIVATIONAL" width="100%">
+    </div>
+    <div class="placeholder"></div>
+    <div class="sign"> <!--Register Fenster-->
+        <form>
+        <input type="text" id="name" class="form" placeholder="N A M E">
+        <input type="email" id="email" class="form" placeholder="E M A I L">
+        <input type="text" id="username" class="form" placeholder="U S E R N A M E">
+        <input type="password" id="password" class="form" placeholder="P A S S W O R D">
+
+        <button onClick="signup()" class="form button">LET'S GET MOTIVATIONAL</button></form>
+        <div class="text other"><a href="login.html" style="color:black; text-decoration:none;">- L O G - I N -</a></div>
+        <div class="text"><a href="forgotPassword.html" style="color:black; text-decoration:none;">- F O R G O T - P A S S W O R D -</a></div>
+    </div>
+    <div class="">
+
+    </div>
+</div>
+
+</body>
+</html>

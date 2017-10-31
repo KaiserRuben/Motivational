@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../css/nav.css" type="text/css">
+    <link rel="stylesheet" href="../../css/menu.css" type="text/css">
+</head>
+<body>
+    <script type="text/javascript">
+        function goBack(){
+            console.log("Go back...");
+            history.back();
+        }
+    </script>
+    
+    <div class="home">
+
+        <ul class="nav">
+            <li class="navbar"><a class="navblock" href="javascript:goBack()"><img src="../../bilder/icon-back.svg" class="navicon"></a></li>
+            <li class="navbar"><a class="navblock"><img src="../../bilder/logo.svg" class="navicon"></a></li>
+            <li class="navbar"><a class="navblock"><img src="../../bilder/transparent.png" class="navicon"></a></li>
+        </ul>
+
+
+
+        <div class="content">
+            <div class="headline">M E N U</div>
+            <hr />
+            <a href="../pages/home.html"><button class="form">H O M E</button></a>
+            <a href="../pages/ranking.html"><button class="form">R A N K I N G</button></a>
+            <a href="../pages/friends.html"><button class="form">F R I E N D S</button></a>
+
+            <a href="../pages/calender.html"><button class="form">C A L E N D E R</button></a>
+        </div>
+
+    </div>
+
+</body>
+</html>

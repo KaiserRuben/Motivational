@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.motivational.motivational" version="0.0.12" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+    <name>Motivational</name>
+    <description>
+        An App, whith motivates you!
+    </description>
+    <author email="support@phonegap.com" href="http://phonegap.com">
+        Motivational Team
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+    <allow-navigation href="*" />
+    <allow-navigation href="*" />
+    <engine name="android" spec="~6.3.0" />
+    <engine name="ios" spec="~4.5.2" />
+    <engine name="windows" spec="^5.0.0" />
+    <plugin name="cordova-plugin-whitelist" spec="^1.3.2" />
+</widget>

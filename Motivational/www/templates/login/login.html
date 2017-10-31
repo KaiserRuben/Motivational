@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link href="../../css/login.css" rel="stylesheet" type="text/css">
+    <!--<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width"> -->
+    <!-- <meta http-equiv="refresh" content="2; URL=login.html"> SWeiterleitung zum Loginscreen-->
+    <title>Motivational</title>
+    <script src="../../js/serverlogin.js"></script>
+    <script type="text/javascript">
+        var cookieset = false;
+        function isPasswordCorrect(user, password) {
+            if(user=="admin"){
+                window.location = "../pages/home.html";
+            }else{
+            var xhr = new XMLHttpRequest(); 
+            var data ={};
+            data.username=user;
+            data.password=password;
+            console.log(user);
+            console.log(serveradress);
+            
+            xhr.open("POST", serveradress, true);
+            xhr.setRequestHeader("Content-type", "application/json");
+            xhr.onreadystatechange = function() {//Call a function when the state changes.
+                
+        if(xhr.readyState === 4 && xhr.status === 200) {
+            if(loginrequest.statusText=="Accepted"){
+                window.location = "../pages/home.html";
+            }else{
+                console.log(xhr.statusText);
+            }
+            return true;
+            }
+            else {
+                alert("Falsches Passwort oder inkorrekter Username.");
+                return false;
+        }
+        xhr.send(JSON.stringify(data));
+    }}}
+
+        function loginValidieren() {
+
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+            if(!cookieset){
+                document.cookie = "username="+username+"; expires=Thu, 18 Dec 2100 12:00:00 UTC";
+                console.log(document.cookie);
+            }
+            console.log(isPasswordCorrect(username, password));
+            console.log(serveradress);
+        }
+        
+        function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+        
+    </script>
+
+
+</head>
+<body>
+<div class="content">
+    <div class="logo">
+        <img src="../../bilder/login.svg" alt="MOTIVATIONAL" width="100%">
+    </div>
+    <div class="placeholder"></div>
+
+    <div class="sign"> <!--Login Fenster-->
+        <script type="text/javascript">
+            var usernamecookie = getCookie("username");
+            if (usernamecookie != "") {
+                document.write("<input type='text' class='form' id='username' value='"+usernamecookie+"'>");
+                cookieset = true;
+                console.log("Es gibt schon einen Cookie.");
+            }else{
+                document.write("<input type='text' class='form' id='username' placeholder='U S E R N A M E'>");
+                cookieset = false;
+                console.log("Es wird ein Cookie gesetzt.");
+            }
+        </script>
+        
+        <input type="password" class="form" id="password" placeholder="P A S S W O R D ">
+
+        <button onClick="loginValidieren()" class="form button">LET'S GET MOTIVATIONAL</button>
+
+        <div class="text other"><a href="signup.html" style="color:black; text-decoration:none;">- S I G N - U P -</a></div>
+        <div class="text"><a href="forgotPassword.html" style="color:black; text-decoration:none;">- F O R G O T - P A S S W O R D -</a></div>
+    </div>
+
+</div>
+
+</body>
+</html>
+

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="../../css/nav.css" type="text/css">
+    <link rel="stylesheet" href="../../css/rank.css" type="text/css">
+    <meta charset="UTF-8">
+    <script type="text/javascript">
+
+    function getCookie() {
+    var name = "termine=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+function cookiereader(){
+    var ccalender = getCookie();
+    console.log(ccalender);
+    var timesplit = ccalender.split("_");
+    var events = timesplit[0];
+    console.log(events);
+    var event = events.split("|");
+    for(var u = 0; u < event.length; u++){
+        event[u] = event[u].split("#");
+    }
+    return event;
+}
+    </script>
+</head>
+<body>
+    <div class="home">
+
+        <ul class="nav">
+            <li class="navbar"><a class="navblock" href="../menu/menu.html"><img src="../../bilder/menu-icon.svg" class="navicon"></a></li>
+            <li class="navbar"><a class="navblock"><img src="../../bilder/logo.svg" class="navicon"></a></li>
+            <li class="navbar"><a class="navblock" href="../menu/settings/addCalender.html"><img src="../../bilder/icon-add.svg" class="navicon"></a></li>
+        </ul>
+
+        <div class="content">
+            <div class="headline">C A L E N D E R</div>
+            <hr />
+
+            <div class="ranking">
+                <div class="calender"> <!--60%-->
+                    <b>DATE</b>
+                </div>
+                <div class="calender"> <!--25%-->
+                    <b>SUBJECT</b>
+                </div>
+            </div>
+
+            <hr />
+            <script type="text/javascript">
+                var eventArray = cookiereader();
+                
+                for(var a=1; a<eventArray.length;a++){
+                    document.write("<div class='ranking'>");
+                    document.write("<div class='calender'> <!--60%-->");
+                    var date = eventArray[a][0].split("-");
+                    
+                    for(var p = 2; p>=0;p--){
+                        document.write(date[p]);
+                        if(p!=0){
+                            document.write(".");
+                        }
+                    }
+                    document.write("</div>");
+                    document.write("<div class='calender'> <!--25%-->");
+                    document.write(eventArray[a][1]);
+                    document.write("</div>");
+                    document.write("</div>");
+                    document.write("<hr />");
+                }
+            
+            </script>
+        </div>
+
+    </div>
+
+</body>
+</html>
